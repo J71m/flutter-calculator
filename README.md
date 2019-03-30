@@ -1,16 +1,9 @@
 # flutter_calculator
 
-A new Flutter project.
+<img style="margin: auto;" src="https://i.imgur.com/Wer1kXx.png" height="450">
 
-## Getting Started
+Projekti seadistamisel paigaldasin Flutter SDK kasutades https://flutter.dev/docs/get-started/install/windows. Arendamiseks kasutasin Visual Studio Code'i Android Studio asemel, sest sellega tundus mugavam ja vähemnõudlik ressursside osas. Testimiseks kasutasin Nokia 7 plus (9.0).
 
-This project is a starting point for a Flutter application.
+Juhendina kasutasin https://youtu.be/eVG5DkPF5x8. Juhend oli seletamise poolest päris hea ja ei olnud olukorda, kus midagi jäi täiesti arusaamatuks. Kuigi juhendi lõpuks sai kokku toimiva rakenduse, siis sellel olid teatud loogilised vead, mis vajasid parandamist.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Rakenduse terviklikumaks muutmiseks lisasin lisaks vastusele juurde tehte ning muutsin, kuidas täisarve kuvatakse, et see näeks välja meeldivam.
