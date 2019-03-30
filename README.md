@@ -1,6 +1,6 @@
 # flutter_calculator
 
-<img style="margin: auto;" src="https://i.imgur.com/Wer1kXx.png" height="450">
+<img src="https://i.imgur.com/Wer1kXx.png" height="450" align="center">
 
 Projekti seadistamisel paigaldasin Flutter SDK kasutades https://flutter.dev/docs/get-started/install/windows. Arendamiseks kasutasin Visual Studio Code'i Android Studio asemel, sest sellega tundus mugavam ja vähemnõudlik ressursside osas. Testimiseks kasutasin Nokia 7 plus (9.0).
 
