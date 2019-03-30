@@ -28,11 +28,23 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   String output = "0";
+  String calculation = "";
 
   clearScreen(){
     setState(() {
-      output = "0"; 
+      output = "0";
+      calculation = "";
     });
+  }
+
+  removeDecimalWhenNeeded(String number) {
+    var outputLength = number.length;
+    String lastChars = number[outputLength-2] + number[outputLength-1];
+    if(lastChars==".0"){
+      return number.substring(0, outputLength - 2);
+    } else {
+      return number;
+    }
   }
 
   String _output = "";
@@ -57,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     } else if(buttonText == "="){
       num2 = double.parse(output);
-
       try {
         switch(operand) {
           case "+": { _output = (num1 + num2).toString(); }
@@ -76,26 +87,16 @@ class _MyHomePageState extends State<MyHomePage> {
           break; 
         }
 
-        var outputLength = _output.length;
-        String lastChars = _output[outputLength-2] + _output[outputLength-1];
-        if(lastChars==".0"){
-          setState(() {
-            print(_output);
-            print(_output.substring(0, outputLength - 2));
-            output = _output.substring(0, outputLength - 2);
-          });
-        } else {
-          setState(() {
-            output = double.parse(_output).toStringAsFixed(5); 
-          });
-        }
+
+        setState(() {
+            output = removeDecimalWhenNeeded(_output);
+            calculation = removeDecimalWhenNeeded(num1.toString()) + operand + removeDecimalWhenNeeded(num2.toString());
+        });
 
       } catch (e) {
         print(e);
         _output = "ERROR";
       }
-
-      num1 = 0.0;
       num2 = 0.0;
     } else {
       if(_output == "0"){
@@ -155,9 +156,9 @@ class _MyHomePageState extends State<MyHomePage> {
               vertical: 24.0,
               horizontal: 12.0
             ),
-            child: new Text(output, style: new TextStyle(
+            child: new Text(calculation, style: new TextStyle(
               fontSize: 32.0,
-              fontWeight: FontWeight.w500
+              fontWeight: FontWeight.w400
               ),
             ),
           ),
