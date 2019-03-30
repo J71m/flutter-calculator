@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  String _output = "0";
+  String _output = "";
   double num1 = 0.0;
   double num2 = 0.0;
   String operand = "";
@@ -76,9 +76,20 @@ class _MyHomePageState extends State<MyHomePage> {
           break; 
         }
 
-        setState(() {
-          output = double.parse(_output).toString(); 
-        });
+        var outputLength = _output.length;
+        String lastChars = _output[outputLength-2] + _output[outputLength-1];
+        if(lastChars==".0"){
+          setState(() {
+            print(_output);
+            print(_output.substring(0, outputLength - 2));
+            output = _output.substring(0, outputLength - 2);
+          });
+        } else {
+          setState(() {
+            output = double.parse(_output).toStringAsFixed(5); 
+          });
+        }
+
       } catch (e) {
         print(e);
         _output = "ERROR";
@@ -87,7 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
       num1 = 0.0;
       num2 = 0.0;
     } else {
+      if(_output == "0"){
+        _output = buttonText;
+      } else {
       _output = _output + buttonText;
+      }
+      setState(() {
+        output = _output.toString(); 
+      });
     }
 
 
@@ -127,7 +145,22 @@ class _MyHomePageState extends State<MyHomePage> {
             child: new Text(output, style: new TextStyle(
               fontSize: 45.0,
               fontWeight: FontWeight.bold
-            ),)),
+              ),
+            ),
+          ),
+
+          new Container(
+            alignment: Alignment.centerRight,
+            padding: new EdgeInsets.symmetric(
+              vertical: 24.0,
+              horizontal: 12.0
+            ),
+            child: new Text(output, style: new TextStyle(
+              fontSize: 32.0,
+              fontWeight: FontWeight.w500
+              ),
+            ),
+          ),
 
           new Expanded(
             child: new Divider(),
@@ -158,9 +191,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           new Row(
                 children: [
+                  buildButton("."),
                   buildButton("0"),
                   buildButton("000"),
-                  buildButton("."),
                   buildButton("+"),
                 ]
           ),
